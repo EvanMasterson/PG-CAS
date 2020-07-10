@@ -3,6 +3,16 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# JWT used for generating Json Web Tokens for authentication
+gem 'jwt'
+# Loads .env file containing environment variables
+gem 'dotenv-rails'
+# AWS DynamoDB, Simple Notification and Simple Queue services
+gem 'aws-sdk-dynamodb'
+gem 'aws-sdk-sns'
+gem 'aws-sdk-sqs'
+# Bootstrap gem for styling
+gem 'bootstrap'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record

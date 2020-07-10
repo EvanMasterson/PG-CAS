@@ -1,24 +1,49 @@
 # README
+Hosted on - x
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+* Ruby on Rails version
+  ```
+  Ruby 2.6.3
+  Rails ~> 6.0.3
+  
+  # Gemfile
+  bundle install
+  ```
 
-Things you may want to cover:
+* Setup Configuration (AWS)
 
-* Ruby version
+  PostgreSQL Full Setup: (https://github.com/snowplow/snowplow/wiki/Setting-up-PostgreSQL#ec2)
 
-* System dependencies
+  ```
+  # Install PostgreSQL and initial DB creation (https://github.com/snowplow/snowplow/wiki/Setting-up-PostgreSQL#ec2)
+  sudo yum install postgresql postgresql-server postgresql-devel postgresql-contrib postgresql-docs
+  sudo service postgresql initdb
+  sudo service postgresql start
+  sudo -u postgres createuser -s ec2-user
+  sudo -u postgres createdb ec2-user
+  sudo su postgres
+  psql
+  ALTER USER "ec2-user" WITH SUPERUSER;
+  \q
+  ```
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
+  * Setup Configuration (Local)
+  ```
+  # Install PostgreSQL and initial DB creation
+  brew install postgresql
+  brew services start postgresql
+  psql -d postgres
+  CREATE DATABASE pg_cas_development;
+  \q
+  ```
 
 * Deployment instructions
+  ```
+  
+  ```
 
-* ...
+* Run instructions
+  ```
+  Local: rails s -b 0.0.0.0 (Runs on port 3000)
+  AWS: rails s -e production -b 0.0.0.0 -p 80 (Runs on port 80)
+  ```
