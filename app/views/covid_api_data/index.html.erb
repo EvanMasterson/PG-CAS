@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Covid Api Data</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Payload</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @covid_api_data.each do |covid_api_ddata| %>
+      <tr>
+        <td><%= covid_api_ddata.payload %></td>
+        <td><%= link_to 'Show', covid_api_ddata %></td>
+        <td><%= link_to 'Edit', edit_covid_api_ddata_path(covid_api_ddata) %></td>
+        <td><%= link_to 'Destroy', covid_api_ddata, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Covid Api Ddata', new_covid_api_ddata_path %>

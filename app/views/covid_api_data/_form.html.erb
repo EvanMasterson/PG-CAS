@@ -1,0 +1,22 @@
+<%= form_with(model: covid_api_ddata, local: true) do |form| %>
+  <% if covid_api_ddata.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(covid_api_ddata.errors.count, "error") %> prohibited this covid_api_ddata from being saved:</h2>
+
+      <ul>
+        <% covid_api_ddata.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :payload %>
+    <%= form.text_field :payload %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
