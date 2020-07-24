@@ -1,0 +1,8 @@
+<h1>Welcome#index</h1>
+<p>Find me in app/views/welcome/index.html.erb</p>
+
+<%= form_tag("api/coviddata", method: "get") do %>
+  <%= label_tag(:location, "Retrieve Covid-19 Data for Location:") %>
+  <%= text_field_tag(:location) %>
+  <%= submit_tag("Search") %>
+<% end %>

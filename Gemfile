@@ -3,6 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# HTTParty for rest calls
+gem 'httparty'
 # JWT used for generating Json Web Tokens for authentication
 gem 'jwt'
 # Loads .env file containing environment variables
