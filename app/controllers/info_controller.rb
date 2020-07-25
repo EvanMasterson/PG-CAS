@@ -13,6 +13,7 @@ class InfoController < ApplicationController
         @response = self.retrieveApiData
         CovidApiData.create(payload: {location: @location, data: @response})
       end
+      render json: @response, status: :ok
     else
       redirect_to(root_url)
     end
