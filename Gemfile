@@ -15,6 +15,7 @@ gem 'aws-sdk-sns'
 gem 'aws-sdk-sqs'
 # Bootstrap gem for styling
 gem 'bootstrap'
+gem 'sassc', '~> 2.1.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 # Use postgresql as the database for Active Record

@@ -1,18 +1,2 @@
 <h1>Info#coviddata</h1>
 <p>Find me in app/views/info/coviddata.html.erb</p>
-
-<h3>Covid Data for: <%= @location %> </h3>
-<table>
-  <thead>
-    <tr>
-      <th>Data</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <% @response.each do |result| %>
-      <td><%= result %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
