@@ -9,4 +9,8 @@ class Api
     responsebody = JSON.parse(response.body)
     return responsebody
   end
+
+  def self.updateCovidData(data)
+
+  end
 end

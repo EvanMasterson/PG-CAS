@@ -1,4 +1,6 @@
-class InfoController < ApplicationController
+class ApiController < ActionController::API
+  # protect_from_forgery unless: -> { request.format.json? }
+
   def coviddata
     if params[:location].to_s.present?
       @location = params[:location]
@@ -25,5 +27,10 @@ class InfoController < ApplicationController
       apiData = {"message"=>"Not Found"}
     end
     return apiData
+  end
+
+  # curl -X POST -d "Key=Value" http://localhost:3000/api/updaterisklevel
+  def updateApiDataWithRiskLevel
+    render json: request.body.read, status: :ok
   end
 end

@@ -3,5 +3,6 @@ Rails.application.routes.draw do
   root 'welcome#index'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
-  match 'api/coviddata', to: 'info#coviddata', via: [:get, :post]
+  match 'api/coviddata', to: 'api#coviddata', via: [:get, :post]
+  match 'api/updaterisklevel', to: 'api#updateApiDataWithRiskLevel', via: [:post]
 end
