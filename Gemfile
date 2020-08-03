@@ -3,6 +3,11 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Auth0 being used for authentication (e.g: with Google)
+gem 'omniauth-auth0', '~> 2.2'
+gem 'omniauth-rails_csrf_protection', '~> 0.1'
+# Troubleshooting
+gem 'pry'
 # HTTParty for rest calls
 gem 'httparty'
 # JWT used for generating Json Web Tokens for authentication

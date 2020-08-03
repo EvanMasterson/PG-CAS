@@ -4,6 +4,13 @@ Rails.application.configure do
   # Code is not reloaded between requests.
   config.cache_classes = true
 
+  OmniAuth.config.on_failure = Proc.new { |env|
+  message_key = env['omniauth.error.type']
+  error_description = Rack::Utils.escape(env['omniauth.error'].error_reason)
+  new_path = "#{env['SCRIPT_NAME']}#{OmniAuth.config.path_prefix}/failure?message=#{message_key}&error_description=#{error_description}"
+  Rack::Response.new(['302 Moved'], 302, 'Location' => new_path).finish
+  }
+
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers
   # and those relying on copy on write to perform better.
