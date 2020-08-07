@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: pg_cas_production
-  username: PG_CAS
-  password: <%= ENV['PG_CAS_DATABASE_PASSWORD'] %>
+  host: <%= Rails.application.credentials.dig(:aws, :rds_hostname) %>
+  database: <%= Rails.application.credentials.dig(:aws, :rds_db_name) %>
+  username: <%= Rails.application.credentials.dig(:aws, :rds_username) %>
+  password: <%= Rails.application.credentials.dig(:aws, :rds_password) %>
+  port: <%= Rails.application.credentials.dig(:aws, :rds_port) %>
