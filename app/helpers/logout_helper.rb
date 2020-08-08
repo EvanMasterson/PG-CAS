@@ -1,7 +1,7 @@
 module LogoutHelper
   def logout_url
-    domain = ENV['AUTH0_DOMAIN']
-    client_id = ENV['AUTH0_CLIENT_ID']
+    domain = Rails.application.credentials.dig(:auth0, :domain)
+    client_id = Rails.application.credentials.dig(:auth0, :client_id)
     request_params = {
       returnTo: root_url,
       client_id: client_id

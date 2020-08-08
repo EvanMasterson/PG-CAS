@@ -7,13 +7,15 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<h1>Login to save your data and get notifications</h1>
-<%-#=image_tag "/assets/028-covid-19.svg", width:72 %>
-<%= button_to 'Login', 'auth/auth0', method: :post %>
-
-<h1>See dashboard</h1>
-<%= button_to 'See Dashboard', 'dashboard', method: :get %>
-
-<h1>Logout</h1>
-<%#= button_to 'Logout', 'logout', method: :destroy %>
-<%= link_to "logout", {:controller=> "logout", :action=> "logout"}, :method => :delete%>
+<% if !session[:userinfo].present? %>
+  <h1>Login to save your data and get notifications</h1>
+  <%-#=image_tag "/assets/028-covid-19.svg", width:72 %>
+  <%= button_to 'Login', '/auth/auth0', method: :post %>
+<% else %>
+  <h1>See dashboard</h1>
+  <%= button_to 'See Dashboard', 'dashboard', method: :get %>
+  
+  <h1>Logout</h1>
+  <%#= button_to 'Logout', 'logout', method: :destroy %>
+  <%= link_to "logout", logout_path, :method => :destroy%>
+<% end %>
