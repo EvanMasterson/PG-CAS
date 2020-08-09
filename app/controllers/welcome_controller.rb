@@ -13,7 +13,7 @@ class WelcomeController < ApplicationController
 
       render json: responsebody, status: :ok
     else
-      redirect_to root_url, notice: "Location was empty"
+      redirect_to root_url, alert: "Location was empty"
     end
   end
 end
