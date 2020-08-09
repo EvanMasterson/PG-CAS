@@ -13,3 +13,18 @@
  *= require_tree .
  *= require_self
  */
+
+.jumbo-thumbnail {
+    height: 150px;
+    width: 200px;
+}
+
+.jumbo-thumbnail img {
+    top: 53%;
+    max-width: 20%;
+}
+
+.header-avatar img {
+  border-radius: 50%;
+  width: 500px;
+}

@@ -1,7 +1,25 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<section class="jumbotron  text-center">
+  <h2><img class="header-avatar" src="<%= @user_details['info']['image'] %>"></h2>
+  <h2>You are now logged in, <%= @user_details['extra']['raw_info']['name'] %>!</h2>
+</section>
 
-<%= session[:userinfo].inspect %>
+<section class="container">
+
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Email </div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user_details['extra']['raw_info']['email']) %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Bearer token </div>
+    <div class="panel-body">
+      <pre><%= JSON.pretty_generate(@user_details['credentials']['id_token']) %></pre>
+    </div>
+  </div>
+</section>
 
 <%= link_to 'Back', root_path, { action: "get" } %>
 

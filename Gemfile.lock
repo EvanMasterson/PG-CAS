@@ -96,8 +96,13 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    city-state (0.1.0)
+      rubyzip (>= 1.1)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
+    country_state_select (3.0.5)
+      city-state
+      rails
     crass (1.0.6)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
@@ -270,6 +275,7 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 2.15)
+  country_state_select
   dotenv-rails
   httparty
   jbuilder (~> 2.7)

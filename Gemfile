@@ -12,6 +12,8 @@ gem 'pry'
 gem 'httparty'
 # JWT used for generating Json Web Tokens for authentication
 gem 'jwt'
+# Populate a dropdown with all possible countries
+gem 'country_state_select'
 # Loads .env file containing environment variables
 gem 'dotenv-rails'
 # AWS DynamoDB, Simple Notification and Simple Queue services
