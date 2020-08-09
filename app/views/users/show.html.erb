@@ -17,14 +17,14 @@
     <div class="panel panel-default">
     <div class="panel-heading">Pre-existing conditions</div>
     <div class="panel-body">
-      <pre><%= @user.pre_existing_conditions %></pre>
+      <pre><%= current_user.select(:pre_existing_conditions).first.pre_existing_conditions %></pre>
     </div>
   </div>
 
       <div class="panel panel-default">
     <div class="panel-heading">Country</div>
     <div class="panel-body">
-      <pre><%= @user.country %></pre>
+      <pre><%= current_user.select(:country).first.country %></pre>
     </div>
   </div>
 

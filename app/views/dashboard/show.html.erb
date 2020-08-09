@@ -29,7 +29,7 @@
   <div class="panel panel-default">
     <div class="panel-heading">Pre-existing conditions</div>
     <div class="panel-body">
-      <pre><%= user_details.select(:pre_existing_conditions).first.pre_existing_conditions %></pre>
+      <pre><%= current_user.select(:pre_existing_conditions).first.pre_existing_conditions %></pre>
     </div>
   </div>
 

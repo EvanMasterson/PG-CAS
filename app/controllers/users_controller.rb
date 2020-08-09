@@ -13,7 +13,6 @@ class UsersController < ApplicationController
     user_id = current_user.select(:id).first.id
     @user = User.find([user_id])
   	@user_details = session[:userinfo]
-    binding.pry
   end
 
   # GET /users/new
