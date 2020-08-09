@@ -3,18 +3,18 @@ class Auth0Controller < ApplicationController
     # This stores all the user information that came from Auth0
     # and the IdP
     session[:userinfo] = request.env['omniauth.auth']
-    # if session[:userinfo].present?
-    # @authorization = Authorization.find_by_provider_and_uid(session[:userinfo]["provider"], session[:userinfo]["uid"]) 
-    # else
-    #   user = User.new(
-    #     :name => session[:userinfo]['extra']['raw_info']['name'], 
-    #     :email => session[:userinfo]['extra']['raw_info']['email'], 
-    #     :auth0_user_id => session[:userinfo]['uid'],
-    #     :profile_photo_url => session[:userinfo]['info']['image'])
-    #   user.authorizations.build :provider => session[:userinfo]["provider"], :uid => session[:userinfo]["uid"]
-    #   user.save
-    #   session[:user_id] = user.id
-    # end
+    @authorization = Authorization.find_by_provider_and_uid(session[:userinfo]["provider"], session[:userinfo]["uid"])
+    if @authorization
+    render :text => "Welcome back #{@authorization.user.name}! You have already signed up." 
+    else
+      user = User.new(
+        :name => session[:userinfo]['extra']['raw_info']['name'], 
+        :email => session[:userinfo]['extra']['raw_info']['email'], 
+        :auth0_user_id => session[:userinfo]['uid'],
+        :profile_photo_url => session[:userinfo]['info']['image'])
+      user.authorizations.build :provider => session[:userinfo]["provider"], :uid => session[:userinfo]["uid"]
+      user.save
+    end
   # Redirect to the URL you want after successful auth
   redirect_to '/dashboard'
   end  
