@@ -1,8 +1,54 @@
-<h1>Dashboard#show</h1>
-<p>Find me in app/views/dashboard/show.html.erb</p>
+<section class="jumbotron  text-center">
+  <h2><img class="header-avatar" width=150 src="<%= @current_user.profile_photo_url %>"></h2>
+  <h2>You are now logged in, <%= @current_user.name %>!</h2>
+</section>
 
-<%= session[:userinfo].inspect %>
+<section class="container">
 
-<%= link_to 'Back', root_path, { action: "get" } %>
+  <div class="panel panel-default">
+    <div class="panel-heading">User ID</div>
+    <div class="panel-body">
+      <pre><%= @user_id %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Auth0 User ID</div>
+    <div class="panel-body">
+      <pre><%= @auth0_user_id %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Email </div>
+    <div class="panel-body">
+      <pre><%= @email %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Pre-existing conditions</div>
+    <div class="panel-body">
+      <pre><%= current_user.pre_existing_conditions %></pre>
+    </div>
+  </div>
+
+      <div class="panel panel-default">
+    <div class="panel-heading">Country</div>
+    <div class="panel-body">
+      <pre><%= @country %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Bearer token </div>
+    <div class="panel-body">
+      <pre><%= @bearer_token %></pre>
+    </div>
+  </div>
+</section>
+
+<%= link_to 'Edit Profile', edit_user_path(current_user.id, ) %> | <%= link_to 'Back', root_path, { action: "get" } %>
+
 
 

@@ -102,8 +102,13 @@ GEM
       regexp_parser (~> 1.5)
       xpath (~> 3.2)
     childprocess (3.0.0)
+    city-state (0.1.0)
+      rubyzip (>= 1.1)
     coderay (1.1.2)
     concurrent-ruby (1.1.6)
+    country_state_select (3.0.5)
+      city-state
+      rails
     crass (1.0.6)
     dotenv (2.7.5)
     dotenv-rails (2.7.5)
@@ -226,6 +231,9 @@ GEM
     selenium-webdriver (3.142.7)
       childprocess (>= 0.5, < 4.0)
       rubyzip (>= 1.2.2)
+    simple_form (5.0.1)
+      actionpack (>= 5.0)
+      activemodel (>= 5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -277,6 +285,7 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 2.15)
+  country_state_select
   dotenv-rails
   httparty
   jbuilder (~> 2.7)
@@ -291,6 +300,7 @@ DEPENDENCIES
   sass-rails (>= 6)
   sassc (~> 2.1.0)
   selenium-webdriver
+  simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
   turbolinks (~> 5)
