@@ -14,6 +14,8 @@
     </head>
 
 <body>
+    <p class="notice"><%= flash[:notice] %></p>
+    <p class="alert"><%= flash[:alert] %></p>
     <nav class="navbar navbar-default navbar-static-top">
       <div class="container">
         <% flash.each do |key, value| %>
@@ -41,6 +43,7 @@
       </div>
     </nav>
   <div class="container">
+  <body>
     <%= yield %>
   </div>
 </body>

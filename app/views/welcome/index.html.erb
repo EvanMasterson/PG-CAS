@@ -1,7 +1,7 @@
 <h1>Welcome to the COVID-19 Risk Service! #index</h1>
 <p>Find me in app/views/welcome/index.html.erb</p>
 
-<%= form_tag("api/coviddata", method: "get") do %>
+<%= form_tag(retrieve_data_path, method: "get") do %>
   <%= label_tag(:location, "Retrieve Covid-19 Data for your country:") %>
   <%= text_field_tag(:location) %>
   <%= submit_tag("Search") %>

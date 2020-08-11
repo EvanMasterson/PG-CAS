@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+gem 'activerecord-session_store'
 # Auth0 being used for authentication (e.g: with Google)
 gem 'omniauth-auth0', '~> 2.2'
 gem 'omniauth-rails_csrf_protection', '~> 0.1'

@@ -8,8 +8,9 @@ Rails.application.routes.draw do
   match 'api/coviddata', to: 'api#coviddata', via: [:get, :post]
   match 'api/updaterisklevel', to: 'api#updateApiDataWithRiskLevel', via: [:post]
 
+  get 'retrieve_data', to: 'welcome#retrieveData'
   get '/auth/auth0/callback' => 'auth0#callback'
   get '/auth/failure' => 'auth0#failure'
   get 'dashboard' => 'dashboard#show'
-  get 'logout' => 'logout#logout', via: :destroy
+  get 'logout' => 'logout#logout'#, via: :destroy
 end

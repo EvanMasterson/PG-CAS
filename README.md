@@ -1,5 +1,5 @@
 # README
-Hosted on - x
+Hosted on - https://ncicloud.live
 
 * Ruby on Rails version
   ```
