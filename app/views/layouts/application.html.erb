@@ -29,12 +29,17 @@
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
-            <li class="<%= 'active' if params[:controller] == 'home' %>"><a href="/">Home</a></li>
+            <li class="<%= 'active' if params[:controller] == 'welcome' %>"><a href="/">Home</a></li>
             <li class="<%= 'active' if params[:controller] == 'dashboard' %>"><a href="/dashboard">My Dashboard</a></li>
           </ul>
           <% if session[:userinfo] %>
             <ul class="nav navbar-nav navbar-right">
               <li class="<%= 'active' if params[:controller] == 'logout' %>"><a id="qsLogoutBtn" href="/logout">Logout</a></li>
+            </ul>
+          <% else %>
+            <ul class="nav navbar-nav navbar-right">
+              <li class="<%= 'active' if params[:controller] == '/auth/auth0' %>"><%= link_to 'Login', '/auth/auth0', method: :post, id: 'qsLogoutBtn' %></a></li>
+              <!-- <li class="<%= 'active' if params[:controller] == '/auth/auth0' %>"><a id="qsLogoutBtn" href="/logout">Login</a></li> -->
             </ul>
           <% end %>
         </div>

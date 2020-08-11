@@ -1,5 +1,8 @@
 class WelcomeController < ApplicationController
   include HTTParty
+  
+  before_action :current_user
+
   def index
   end
 
