@@ -33,6 +33,10 @@ Hosted on - https://ncicloud.live
   brew services start postgresql
   createuser -s PG_CAS
   createdb pg_cas_development
+
+  # Install Redis
+  brew install redis
+  redis-server --daemonize yes
   ```
 
 * Deployment instructions

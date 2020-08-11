@@ -3,6 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
 
+# Queueing backend
+gem 'sidekiq'
+# Store session in active record
 gem 'activerecord-session_store'
 # Auth0 being used for authentication (e.g: with Google)
 gem 'omniauth-auth0', '~> 2.2'
