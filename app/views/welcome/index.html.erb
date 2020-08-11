@@ -7,13 +7,14 @@
   <%= submit_tag("Search") %>
 <% end %>
 
-<% if !session[:userinfo].present? %>
-  <h1>Login to save your data and get notifications</h1>
-  <%= button_to 'Login', '/auth/auth0', method: :post, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' %>
-<% else %>
+<% if @current_user.present? %>
   <h1>See dashboard</h1>
   <%= button_to 'See Dashboard', 'dashboard', method: :get, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' %>
-  
+
+<% else %>
+  <h1>Login to save your data and get notifications</h1>
+  <%= button_to 'Login', '/auth/auth0', method: :post, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' %>
+
   <h1>Logout</h1>
   <%= link_to "logout", logout_path %>
 <% end %>

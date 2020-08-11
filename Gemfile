@@ -14,6 +14,7 @@ gem 'httparty'
 gem 'jwt'
 # Populate a dropdown with all possible countries
 gem 'country_state_select'
+gem 'simple_form'
 # Loads .env file containing environment variables
 gem 'dotenv-rails'
 # AWS DynamoDB, Simple Notification and Simple Queue services

@@ -1,8 +1,8 @@
 <p id="notice"><%= notice %></p>
 
 <section class="jumbotron  text-center">
-  <h2><img class="jumbo-thumbnail" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/70/Emoji_u1f44b.svg/1024px-Emoji_u1f44b.svg.png"></h2>
-  <h2>Edit <%= @user_details['extra']['raw_info']['name'] %>'s Profile!</h2>
+  <h2><img class="jumbo-thumbnail" src="@current_user.profile_photo_url "></h2>
+  <h2>Edit <%= @current_user.name %>'s Profile!</h2>
 </section>
 
 <section class="container">
@@ -10,37 +10,31 @@
   <div class="panel panel-default">
     <div class="panel-heading">Email </div>
     <div class="panel-body">
-      <pre><%= JSON.pretty_generate(@user_details['extra']['raw_info']['email']) %></pre>
+      <pre><%= @current_user.email %></pre>
     </div>
   </div>
 
     <div class="panel panel-default">
     <div class="panel-heading">Pre-existing conditions</div>
     <div class="panel-body">
-      <pre><%= current_user.select(:pre_existing_conditions).first.pre_existing_conditions %></pre>
+      <pre><%= @current_user.pre_existing_conditions %></pre>
     </div>
   </div>
 
       <div class="panel panel-default">
     <div class="panel-heading">Country</div>
     <div class="panel-body">
-      <pre><%= current_user.select(:country).first.country %></pre>
+      <pre><%= @current_user.country %></pre>
     </div>
   </div>
 
     <div class="panel panel-default">
     <div class="panel-heading">Bearer token </div>
     <div class="panel-body">
-      <pre><%= JSON.pretty_generate(@user_details['credentials']['id_token']) %></pre>
+      <pre><%= @current_user.auth0_user_id %></pre>
     </div>
   </div>
   
-  <div class="panel panel-default">
-    <div class="panel-heading">User Details</div>
-    <div class="panel-body">
-      <pre><%= JSON.pretty_generate(@user_details) %></pre>
-    </div>
-  </div>
 </section>
-<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Edit', edit_user_path(@current_user) %> |
 <%= link_to 'Back', users_path %>

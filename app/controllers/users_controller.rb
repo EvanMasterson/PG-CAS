@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :current_user
 
   # GET /users
   # GET /users.json
@@ -10,9 +10,6 @@ class UsersController < ApplicationController
   # GET /users/1
   # GET /users/1.json
   def show
-    user_id = current_user.select(:id).first.id
-    @user = User.find([user_id])
-  	@user_details = session[:userinfo]
   end
 
   # GET /users/new
@@ -22,23 +19,18 @@ class UsersController < ApplicationController
 
   # GET /users/1/edit
   def edit
-    user_id = current_user.select(:id).first.id
-  	@user = User.find([user_id])
   end
 
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   def update
-    user_id = current_user.select(:id).first.id
-    @user = User.find([user_id])
-    @user_object = User.where(id: @user.map(&:id))
     respond_to do |format|
-      if @user_object.update(user_params)
-        format.html { redirect_to @user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @user }
+      if @current_user.update(user_params)
+        format.html { redirect_to @current_user, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: @current_user }
       else
         format.html { render :edit }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
+        format.json { render json: @current_user.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -56,8 +48,7 @@ class UsersController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
-      user_id = current_user.select(:id).first.id
-      @user = User.find([user_id])
+      @user = User.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
