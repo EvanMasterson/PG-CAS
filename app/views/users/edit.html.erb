@@ -1,0 +1,25 @@
+<%= simple_form_for @current_user do |f| %>
+  <%= f.label 'Name' %><br>
+  <%= f.text_field :name, disabled: true, hint: "Set by your Google account" %><br>
+  <%= f.label 'Email' %><br>
+  <%= f.text_field :email, disabled: true, hint: "Set by your Google account" %><br>
+  <%= f.label 'Pre-existing conditions' %><br>
+  <%= f.select(:pre_existing_conditions, 
+	[['Diabetes', 'Diabetes'],
+	['Obesity', 'Obesity'],
+	['Liver Disease', 'Liver Disease'],
+	['Heart Disease', 'Heart Disease'],
+	['Lung Disease', 'Lung Disease'],
+	['Immunocompromised', 'Immunocompromised'],
+	['Elderly', 'Elderly']],
+	{ :prompt => "Please select any pre-existing conditions"},
+    { :multiple => true }
+     ) %><br>
+  <%= f.label 'Country' %><br>
+  <%= f.select :country, collection: CountryStateSelect.countries_collection %>
+
+  <%= f.submit "Submit User" %>
+<% end %>
+
+<%= link_to 'Show', @user %> |
+<%= link_to 'Back', users_path %>
