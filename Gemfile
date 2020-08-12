@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 #i need stupid country names not codes. gah.
 gem 'countries'
+# chartkick for javascript charts https://chartkick.com/
+gem "chartkick"
 # Queueing backend
 gem 'sidekiq'
 # Store session in active record
@@ -22,10 +24,8 @@ gem 'country_state_select'
 gem 'simple_form'
 # Loads .env file containing environment variables
 gem 'dotenv-rails'
-# AWS DynamoDB, Simple Notification and Simple Queue services
-gem 'aws-sdk-dynamodb'
-gem 'aws-sdk-sns'
-gem 'aws-sdk-sqs'
+# AWS rails sdk
+gem 'aws-sdk-rails'
 # Bootstrap gem for styling
 gem 'bootstrap'
 gem 'sassc', '~> 2.1.0'
