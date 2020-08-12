@@ -6,16 +6,35 @@
 <section class="container">
 
   <div class="panel panel-default">
-    <div class="panel-heading">User ID</div>
+    <div class="panel-heading">Risk Score</div>
     <div class="panel-body">
-      <pre><%= @user_id %></pre>
+      <pre><%= @current_user.risk_score %></pre>
     </div>
   </div>
 
   <div class="panel panel-default">
-    <div class="panel-heading">Auth0 User ID</div>
+    <div class="panel-heading">Name </div>
     <div class="panel-body">
-      <pre><%= @auth0_user_id %></pre>
+      <pre><%= @current_user.name %></pre>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-heading">Age </div>
+    <div class="panel-body">
+      <pre><%= @current_user.age %></pre>
+    </div>
+  </div>
+    <div class="panel panel-default">
+    <div class="panel-heading">Symptoms </div>
+    <div class="panel-body">
+      <pre><%= @current_user.has_symptoms? %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">User ID</div>
+    <div class="panel-body">
+      <pre><%= @user_id %></pre>
     </div>
   </div>
 
@@ -37,6 +56,13 @@
     <div class="panel-heading">Country</div>
     <div class="panel-body">
       <pre><%= @country %></pre>
+    </div>
+  </div>
+
+  <div class="panel panel-default">
+    <div class="panel-heading">Auth0 User ID</div>
+    <div class="panel-body">
+      <pre><%= @auth0_user_id %></pre>
     </div>
   </div>
 

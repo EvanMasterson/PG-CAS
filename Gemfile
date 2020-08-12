@@ -2,7 +2,8 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.3'
-
+#i need stupid country names not codes. gah.
+gem 'countries'
 # Queueing backend
 gem 'sidekiq'
 # Store session in active record
