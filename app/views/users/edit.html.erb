@@ -1,24 +1,47 @@
-<%= simple_form_for @current_user do |f| %>
-  <%= f.label 'Name' %><br>
-  <%= f.text_field :name, disabled: true, hint: "Set by your Google account" %><br>
-  <%= f.label 'Email' %><br>
-  <%= f.text_field :email, disabled: true, hint: "Set by your Google account" %><br>
-  <%= f.label 'Pre-existing conditions' %><br>
-  <%= f.select(:pre_existing_conditions, 
-	[['Diabetes', 'Diabetes'],
-	['Obesity', 'Obesity'],
-	['Liver Disease', 'Liver Disease'],
-	['Heart Disease', 'Heart Disease'],
-	['Lung Disease', 'Lung Disease'],
-	['Immunocompromised', 'Immunocompromised'],
-	['Elderly', 'Elderly']],
-	{ :prompt => "Please select any pre-existing conditions"},
-    { :multiple => true }
-     ) %><br>
-  <%= f.label 'Country' %><br>
-  <%= f.select :country, collection: CountryStateSelect.countries_collection %>
+<section class="jumbotron  text-center">
+  <h2><img class="jumbo-thumbnail" src="<%= @current_user.profile_photo_url %>"></h2>
+  <h2>Edit <%= @current_user.name %>'s Profile!</h2>
+</section>
 
-  <%= f.submit "Submit User" %>
+
+<%= simple_form_for(@current_user, html5: true) do |f| %>
+  <fieldset class="form-group">
+    <div class="form-inputs">
+      <div class="form-group">
+      <legend class="col-form-label pt-0">Name</legend>
+      <%= f.input :name, disabled: true, hint: "Set by your Google account" %><br>
+      </div>
+      <div class="form-group">
+        <legend class="col-form-label pt-0">Email</legend>
+        <%= f.input :email, disabled: true, hint: "Set by your Google account" %><br>
+      </div>
+      <div class="form-group">
+        <legend class="col-form-label pt-0">Age</legend>
+        <%= f.input :age, hint: "A number between 0-100" %><br>
+      </div>
+      <div>
+      <%= f.input :pre_existing_conditions, multiple: true, as: :check_boxes, collection:
+        [['Diabetes',         'Diabetes'],
+        ['Obesity',           'Obesity'],
+        ['Liver Disease',     'Liver Disease'],
+        ['Heart Disease',     'Heart Disease'],
+        ['Lung Disease',      'Lung Disease'],
+        ['Immunocompromised', 'Immunocompromised'],
+        ['Elderly', 'Elderly']]%>
+        <small class="form-text text-muted">A pre-existing condition is any condition for which you have already received medical advice or treatment</small>
+      </div>
+      <div class="form-group">
+      <legend class="col-form-label pt-0">Location</legend>
+      <%= f.input :country, collection: CountryStateSelect.countries_collection %>
+      </div>
+      <div class="form-group">
+      <legend class="col-form-label pt-0">How are you feeling today?</legend>
+      <%= f.input :has_symptoms, collection: [['Yes, I have symptoms', true], ['No, no symptoms.', false]], placeholder: 'Enter your condition' %>
+      <small class="form-text text-muted">We use your data anonymously to update risk scores in your country.</small>
+      </div>
+    </div>
+  </fieldset>
+  <%= f.submit "Submit User", class: "btn-primary" %>
 <% end %>
 
 <%= link_to 'Show', @user %> |
