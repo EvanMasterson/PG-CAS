@@ -294,8 +294,8 @@ DEPENDENCIES
   bootstrap
   byebug
   capybara (>= 2.15)
-  countries
   chartkick
+  countries
   country_state_select
   dotenv-rails
   httparty

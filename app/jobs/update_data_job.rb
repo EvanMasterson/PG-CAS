@@ -5,7 +5,7 @@ class UpdateDataJob < ApplicationJob
   def perform(existingData, location, response)
     if !existingData.nil?
       if existingData.updated_at > 1.day.ago
-        existingData.update(payload: {location: location, data: ApiController.retrieveApiData(location)})
+        existingData.update(payload: {location: location, data: ApiController.retrieve_data_from_external_api(location)})
       end
     else
       CovidApiData.create(payload: {location: location, data: response})
