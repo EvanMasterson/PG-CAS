@@ -1,3 +1,5 @@
+<p>Number of users declaring symptoms today: <%= @symptoms_count %></p>
+<br>
 <div id="chart_per_day" class="tab-pane fade in active">
   <%= line_chart [ {name: "Active", data: @active}, {name: "Deaths", data: @deaths}], 
   title: "COVID-19: Cases by day", xtitle: "Date", ytitle: "Cases", 

@@ -1,6 +1,4 @@
 class WelcomeController < ApplicationController
-  include HTTParty
-  
   before_action :current_user
 
   def index
@@ -16,6 +14,7 @@ class WelcomeController < ApplicationController
 
       @active = responsebody.map { |r| [r["Date"], r["Active"]] }
       @deaths = responsebody.map { |r| [r["Date"], r["Deaths"]] }
+      @symptoms_count = responsebody.last["symptoms_count"]
       
       respond_to do |format|
         format.js
