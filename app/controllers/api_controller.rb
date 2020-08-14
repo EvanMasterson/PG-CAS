@@ -4,7 +4,7 @@ class ApiController < SecuredController
 
   def retrieve_covid_data
     if params[:location].to_s.present?
-      location = params[:location]
+      location = params[:location].downcase
       existingData = CovidApiData.find_by("payload->>'location' = ?", location)
       # If data already exists in DB retrieve it, else hit the API and store the response only if it has valid data
       if !existingData.nil?
@@ -23,8 +23,9 @@ class ApiController < SecuredController
   def self.retrieve_data_from_external_api(location)
     apiData = Api.getCovidData(location)
     if apiData.empty? || apiData.instance_of?(Hash)
-      apiData = {"message"=>"Not Found"}
-    end 
+      return apiData
+    end
+    apiData.last["symptoms_count"] = 0
     return apiData
   end
 
@@ -32,8 +33,28 @@ class ApiController < SecuredController
   # curl -H "authorization: bearer token_goes_here" -X PUT 'http://localhost:3000/api/update/data?has_symptoms=yes&location=ireland'
   def update_data_with_symptoms
     if params[:location].present? && params[:has_symptoms].present?
-      # TODO update the covid data by location with has_symptoms
+      location = params[:location].downcase
+      # Check if we have country already in db, if not get data from external api
+      existingData = CovidApiData.find_by("payload->>'location' = ?", location)
+      if !existingData.nil?
+        data = existingData.payload["data"]
+      else
+        data = ApiController.retrieve_data_from_external_api(location)
+      end
 
+      if params[:has_symptoms] == "true"
+        if data.last.key?("symptoms_count")
+          data.last["symptoms_count"] += 1
+        else
+          data.last["symptoms_count"] = 1
+        end
+
+        if !existingData.nil?
+          existingData.update(payload: {location: location, data: data})
+        else
+          CovidApiData.create(payload: {location: location, data: data})
+        end
+      end
 
       payload = { "success" => "Data updated successfully"}
       render json: payload, status: :ok

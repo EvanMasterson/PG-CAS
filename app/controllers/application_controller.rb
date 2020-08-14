@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-
+  include HTTParty
 	attr_reader :current_user
 
   def current_user
