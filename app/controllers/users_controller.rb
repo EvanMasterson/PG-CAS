@@ -31,8 +31,8 @@ class UsersController < ApplicationController
         auth_header = { "Authorization" => "bearer #{@current_user.bearer_token}"}
         HTTParty.put(url, :headers => auth_header)
 
-        format.html { redirect_to @current_user, notice: 'User was successfully updated.' }
-        format.json { render :show, status: :ok, location: @current_user }
+        format.html { redirect_to dashboard_path, notice: 'User was successfully updated.' }
+        format.json { render :show, status: :ok, location: dashboard_path }
       else
         format.html { render :edit }
         format.json { render json: @current_user.errors, status: :unprocessable_entity }

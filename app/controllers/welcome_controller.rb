@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
     if params[:location].to_s.present?
       location = params[:location].downcase
       host = Rails.env.production? ? "https://ncicloud.live" : "http://localhost:3000"
-      url="#{host}/api/retrieve/data?location=#{location}"
+      url="#{host}/api/retrieve/data?location=#{location}" #this is hitting our API in API controller
       response = HTTParty.get(url)
       @responsebody = JSON.parse(response.body)
 
