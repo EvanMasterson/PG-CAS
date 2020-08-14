@@ -26,6 +26,11 @@ class UsersController < ApplicationController
   def update
     respond_to do |format|
       if @current_user.update(user_params)
+        host = Rails.env.production? ? "https://ncicloud.live" : "http://localhost:3000"
+        url="#{host}/api/update/data?has_symptoms=#{@current_user.has_symptoms}&location=#{@current_user.country}"
+        auth_header = { "Authorization" => "bearer #{@current_user.bearer_token}"}
+        HTTParty.put(url, :headers => auth_header)
+
         format.html { redirect_to dashboard_path, notice: 'User was successfully updated.' }
         format.json { render :show, status: :ok, location: dashboard_path }
       else

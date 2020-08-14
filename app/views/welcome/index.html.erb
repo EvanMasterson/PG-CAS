@@ -3,7 +3,7 @@
   <h1>COVID-19 RISK Service</h1>
   <%= form_tag(retrieve_data_path, method: "get", remote: true) do %>
   <%= label_tag(:location, "Retrieve Covid-19 Data for your country:") %>
-  <%= text_field_tag(:location) %>
+  <%= select_tag "location", options_from_collection_for_select(ISO3166::Country.all.sort, "alpha2", "name") %>
   <%= submit_tag("Search") %>
   <span class="glyphicon glyphicon-search"></span>
 <% end %>
