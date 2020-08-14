@@ -4,7 +4,7 @@ class ApiController < SecuredController
 
   def retrieve_covid_data
     if params[:location].to_s.present?
-      location = params[:location]
+      location = params[:location].downcase
       existingData = CovidApiData.find_by("payload->>'location' = ?", location)
       # If data already exists in DB retrieve it, else hit the API and store the response only if it has valid data
       if !existingData.nil?
@@ -23,7 +23,7 @@ class ApiController < SecuredController
   def self.retrieve_data_from_external_api(location)
     apiData = Api.getCovidData(location)
     if apiData.empty? || apiData.instance_of?(Hash)
-      apiData = "Not Found"
+      return apiData
     end
     apiData.last["symptoms_count"] = 0
     return apiData
@@ -33,15 +33,15 @@ class ApiController < SecuredController
   # curl -H "authorization: bearer token_goes_here" -X PUT 'http://localhost:3000/api/update/data?has_symptoms=yes&location=ireland'
   def update_data_with_symptoms
     if params[:location].present? && params[:has_symptoms].present?
+      location = params[:location].downcase
       # Check if we have country already in db, if not get data from external api
-      existingData = CovidApiData.find_by("payload->>'location' = ?", params[:location])
+      existingData = CovidApiData.find_by("payload->>'location' = ?", location)
       if !existingData.nil?
         data = existingData.payload["data"]
       else
-        data = ApiController.retrieve_data_from_external_api(params[:location])
+        data = ApiController.retrieve_data_from_external_api(location)
       end
 
-      puts data
       if params[:has_symptoms] == "true"
         if data.last.key?("symptoms_count")
           data.last["symptoms_count"] += 1
@@ -50,9 +50,9 @@ class ApiController < SecuredController
         end
 
         if !existingData.nil?
-          existingData.update(payload: {location: params[:location], data: data})
+          existingData.update(payload: {location: location, data: data})
         else
-          CovidApiData.create(payload: {location: params[:location], data: data})
+          CovidApiData.create(payload: {location: location, data: data})
         end
       end
 

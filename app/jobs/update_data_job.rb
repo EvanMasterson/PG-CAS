@@ -4,7 +4,7 @@ class UpdateDataJob < ApplicationJob
   # Performs updates to database records when it see's fit to not hinder app performance
   def perform(existingData, location, response)
     if !existingData.nil?
-      if existingData.updated_at > 1.day.ago
+      if existingData.updated_at < 1.day.ago
         existingData.update(payload: {location: location, data: ApiController.retrieve_data_from_external_api(location)})
       end
     else
