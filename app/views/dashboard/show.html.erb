@@ -8,16 +8,23 @@
   <div class="panel panel-default">
     <div class="panel-heading">Risk Score</div>
     <div class="panel-body">
-      <pre><%= @current_user.risk_score %></pre>
+      <% if @current_user.risk_score > 100 %>
+      <div class="alert alert-danger" role="alert">
+      <p>High risk level! Follow <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" class="alert-link">CDC guidelines</a> for high risk citizens.</p>
+      <%= @current_user.risk_score%>
+      </div>
+      <% elsif @current_user.risk_score == 0 %>
+      <div class="alert alert-info" role="alert">
+      <%= "No risk score. Update your age, location and pre-existing conditions on your profile to see your score!" %>
+      </div>
+      <% else %>
+      <div class="alert alert-info" role="alert">
+      <p>Medium risk level though we still recommend following <a href="https://www.cdc.gov/coronavirus/2019-ncov/prevent-getting-sick/index.html" class="alert-link">CDC guidelines</a> for safety.</p><%= @current_user.risk_score %> 
+      </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="panel panel-default">
-    <div class="panel-heading">Name </div>
-    <div class="panel-body">
-      <pre><%= @current_user.name %></pre>
-    </div>
-  </div>
     <div class="panel panel-default">
     <div class="panel-heading">Age </div>
     <div class="panel-body">

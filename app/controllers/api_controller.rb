@@ -9,6 +9,7 @@ class ApiController < SecuredController
       # If data already exists in DB retrieve it, else hit the API and store the response only if it has valid data
       if !existingData.nil?
         response = existingData.payload["data"]
+        binding.pry
       else
         response = ApiController.retrieve_data_from_external_api(location)
       end

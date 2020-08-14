@@ -4,6 +4,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.3'
 #i need stupid country names not codes. gah.
 gem 'countries'
+#adding jquery to try fix charts
+gem 'jquery'
 # chartkick for javascript charts https://chartkick.com/
 gem "chartkick"
 # Queueing backend

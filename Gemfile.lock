@@ -134,6 +134,7 @@ GEM
     jbuilder (2.10.0)
       activesupport (>= 5.0.0)
     jmespath (1.4.0)
+    jquery (0.0.1)
     jwt (2.2.1)
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
@@ -300,6 +301,7 @@ DEPENDENCIES
   dotenv-rails
   httparty
   jbuilder (~> 2.7)
+  jquery
   jwt
   listen (~> 3.2)
   omniauth-auth0 (~> 2.2)

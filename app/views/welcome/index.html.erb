@@ -1,24 +1,16 @@
-<h1>Welcome to the COVID-19 Risk Service!</h1>
-
-<%= form_tag(retrieve_data_path, method: "get", remote: true) do %>
+<div class="jumbotron">
+    <a href="#"><img src="https://i.ibb.co/VBrVj34/PGCAS.png" alt="COVID-19" width="150"></a>
+  <h1>COVID-19 RISK Service</h1>
+  <%= form_tag(retrieve_data_path, method: "get", remote: true) do %>
   <%= label_tag(:location, "Retrieve Covid-19 Data for your country:") %>
   <%= text_field_tag(:location) %>
   <%= submit_tag("Search") %>
+  <span class="glyphicon glyphicon-search"></span>
 <% end %>
+<br></div>
+
 <br><br>
 <div id="charts_div" class="tab-content">
   <div id="chart_per_day" class="tab-pane fade in active"></div>
 </div>
-<!-- 
-<% if @current_user.present? %>
-  <h1>See dashboard</h1>
-  <%= button_to 'See Dashboard', 'dashboard', method: :get, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' %>
 
-<% else %>
-  <h1>Login to save your data and get notifications</h1>
-  <%= button_to 'Login', '/auth/auth0', method: :post, class: 'btn btn-success btn-lg', id: 'qsLoginBtn' %>
-
-  <h1>Logout</h1>
-  <%= link_to "logout", logout_path %>
-<% end %>
--->
