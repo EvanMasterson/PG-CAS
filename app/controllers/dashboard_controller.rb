@@ -310,8 +310,6 @@ class DashboardController < ApplicationController
 	end
 
 	def calculate_risk 
-#in calculate risk, create something in api controller and match route in routes.rb and 
-# do http party and pass in whatever paramaters you need. exact same as what he did in welcome controller.
 	  user_risk = 0 #risk starts at 0
 	  country_risk = determine_country_risk || 0
 	  condition_risk = determine_pre_existing_conditions_risk || 0
