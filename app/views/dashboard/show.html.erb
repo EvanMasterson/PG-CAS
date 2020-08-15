@@ -81,7 +81,8 @@
   </div>
 </section>
 
-<%= link_to 'Edit Profile', edit_user_path(current_user.id, ) %> | <%= link_to 'Back', root_path, { action: "get" } %>
-
+<%= link_to 'Edit Profile', edit_user_path(@current_user.id, ) %> | 
+<%= link_to 'Back', root_path, { action: "get" } %> | 
+<%= link_to 'Delete User', @current_user, method: :delete, data: { confirm: 'Are you sure? This will delete your user profile!' } %>
 
 
